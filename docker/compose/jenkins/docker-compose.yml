@@ -1,0 +1,15 @@
+version: '2'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    volumes:
+      - ../../volumes/jenkins:/var/jenkins_home
+    ports:
+      - "8050:8080"
+      - "50000:50000"
+    environment:
+      - TZ=Asia/Shanghai
+    privileged: true
+    user: root
+    restart: always

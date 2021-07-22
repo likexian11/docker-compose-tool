@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    volumes:
+      - ../../volumes/nginx/logs:/var/log/nginx 
+      - ../../volumes/nginx/conf.d:/etc/nginx/conf.d 
+      - ../../volumes/nginx/html/:/usr/share/html 
+      - ../../volumes/nginx/ssl/:/usr/share/ssl
+#    ports:
+#      - 80:80
+#      - 443:443
+    network_mode: host
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
