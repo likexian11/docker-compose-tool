@@ -1,0 +1,17 @@
+version: '3'
+# 汉化
+# wget https://dl.quchao.net/Soft/Portainer-CN.zip
+# unzip Portainer-CN.zip -d public
+services:
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../../volumes/portainer/public:/public
+      - ../../volumes/portainer/data:/data
+    ports:
+      - 9000:9000
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
