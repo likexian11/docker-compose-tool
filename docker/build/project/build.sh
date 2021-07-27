@@ -3,9 +3,14 @@
 # Description: docker run
 # Version： 1.0
 
-docker stop container_name
-docker rm container_name
-docker rmi image_name
-cd /usr/local/docker/build/project
-docker build -t image_name .
-docker run -d --name container_name -p 8080:8080 -v /usr/local/docker/build/project/logs:/logs image_name:latest
+container_name=smart_city_1
+image_name=smart_city
+jar_dir=/usr/local/docker/smart-city
+project_port=8001
+
+docker stop ${container_name}
+docker rm ${container_name}
+docker rmi ${image_name}
+cd ${jar_dir}
+docker build -t ${image_name} .
+docker run -d --name ${container_name} -p ${project_port}:${project_port} -v /usr/local/docker/smart-city/file/smartcity/:/home/eladmin/smartcity/ ${image_name}:latest
