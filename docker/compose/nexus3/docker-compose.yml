@@ -1,0 +1,13 @@
+version: '2'
+services:
+  nexus3:
+    image: sonatype/nexus3
+    container_name: private-nexus
+    volumes:
+      - ../../volumes/nexus3/nexus-data:/nexus-data
+    ports:
+      - "8901:8081"
+    environment:
+      - TZ=Asia/Shanghai
+    privileged: true
+    restart: always
