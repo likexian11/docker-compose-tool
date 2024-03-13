@@ -6,7 +6,15 @@ echo ""
 echo "#########################################################"
 echo "# 卸载旧版本 -- 开始                                    #"
 echo "#########################################################"
-yum -y remove docker docker-common docker-selinux docker-engine
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine  \
+                  docker-selinux
 echo "#########################################################"
 echo "# 卸载旧版本 -- 结束                                    #"
 echo "#########################################################"
@@ -44,8 +52,9 @@ echo ""
 echo "#########################################################"
 echo "# 安装 docker-ce -- 开始                                #"
 echo "#########################################################"
-
-yum -y install docker-ce
+#安装指定版本
+#sudo yum -y install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io docker-compose-plugin
+sudo yum -y install docker-ce-24.0.6 docker-ce-cli-24.0.6 containerd.io docker-compose-plugin
 echo "#########################################################"
 echo "# 安装 docker-ce -- 结束                                #"
 echo "#########################################################"
@@ -79,8 +88,7 @@ echo ""
 echo "#########################################################"
 echo "# 安装docker-compose -- 开始                            #"
 echo "#########################################################"
-# 从国内镜像 get.daocloud.io 快速下载
-curl -L https://get.daocloud.io/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 echo "#########################################################"
 echo "# 安装docker-compose -- 结束                            #"
@@ -115,6 +123,6 @@ echo ""
 echo ""
 echo "install OK!" # 提示安装完成
 echo ""
-echo "Edit By Meepo 2021-07-20"
+echo "Edit By Meepo 2024-03-13"
 echo ""
 echo ""
