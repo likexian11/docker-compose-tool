@@ -1,15 +1,20 @@
-version: '2'
+version: '3'
+
 services:
   jenkins:
-    image: jenkins/jenkins:lts
+    image: jenkins/jenkins:2.440.1-jdk17
     container_name: jenkins
-    volumes:
-      - ../../volumes/jenkins:/var/jenkins_home
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
     ports:
       - "8050:8080"
       - "50000:50000"
-    environment:
-      - TZ=Asia/Shanghai
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+      - /usr/bin/docker:/usr/bin/docker
+      - /etc/docker/daemon.json:/etc/docker/daemon.json
+      - /docker/jenkins/jenkins_home:/var/jenkins_home
     privileged: true
     user: root
     restart: always
