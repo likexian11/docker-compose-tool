@@ -39,9 +39,13 @@ echo "#########################################################"
 #安装wget，如果已安装则会跳过
 yum -y install wget
 #根据你的发行版下载repo文件:
-wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo
+#wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo
 #把软件仓库地址替换为 TUNA:
-sed -i 's+download.docker.com+mirrors.huaweicloud.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo
+#sed -i 's+download.docker.com+mirrors.huaweicloud.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo
+
+yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+sed -i 's+download.docker.com+mirrors.aliyun.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo
+
 echo "#########################################################"
 echo "# 设置 yum 源 -- 结束                                   #"
 echo "#########################################################"
