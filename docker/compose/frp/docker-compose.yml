@@ -1,13 +1,9 @@
 version: "3"
 services:
   frps:
-    image: snowdreamtech/frps
+    image: snowdreamtech/frps:0.44.0
     container_name: frps
     volumes:
       - ../../volumes/frp/frps.ini:/etc/frp/frps.ini
-    ports:
-      - "9080:80"
-      - "9443:443"
-      - "7000:7000"
-      - "7500:7500"
+    network_mode: host
     restart: always
